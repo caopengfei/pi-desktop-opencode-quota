@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.caopengfei.opencode-quota",
   "name": "OpenCode Quota",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "main.js",
   "author": "caopengfei",
   "license": "MIT",
@@ -13,9 +13,9 @@
   },
   "categories": ["productivity", "developer-tools"],
   "keywords": ["opencode", "quota", "usage", "subscription", "额度", "订阅", "用量"],
-  "description": "OpenCode Go subscription quota in a compact panel: rolling 5-hour, weekly and monthly allowance left, with reset times. Read-only, one endpoint, English and Simplified Chinese.",
-  "safetyNotes": "Read-only. It calls exactly one endpoint (GET opencode.ai/zen/go/v1/usage) with an OpenCode Go API key that you paste into this plugin's settings, and only while the active provider is an OpenCode Go one — with any other provider the panel shows no numbers and makes no request. It never reads chats, transcripts, project files, or PI-Desktop's own provider secrets; the key stays in this plugin's local settings file on your machine and is sent nowhere else.",
-  "changelog": "0.3.0 — Compact single-row layout, and the last-refreshed time now sits in the header just before the refresh button. Removed the provider subtitle and the endpoint footer.\n0.2.0 — English and Simplified Chinese, following the system locale; language can be pinned in the plugin settings.\n0.1.0 — First release: rolling, weekly and monthly OpenCode Go quota with reset times.",
+  "description": "紧凑面板显示 OpenCode Go 订阅剩余额度：滚动 5 小时、每周、每月三档，带进度条与重置倒计时。只读，仅访问一个接口；中英双语，默认跟随系统语言。",
+  "safetyNotes": "只读。唯一请求是 GET opencode.ai/zen/go/v1/usage，且仅在当前供应商为 OpenCode Go 时发出；换成其他供应商时不显示任何数字、也不发请求。manifest 已把出网范围限制为 opencode.ai。不读取对话记录、项目文件，也不读取 PI-Desktop 自身的供应商密钥；API Key 保存在本机插件设置文件中，不会发往任何其他地方。",
+  "changelog": "0.3.1 — 上架信息改为中文。\n0.3.0 — 首个公开版本：滚动 5 小时 / 每周 / 每月三档额度、进度条与重置倒计时；中英双语，默认跟随系统语言。",
   "permissions": ["ui.panel", "models.list", "net.fetch"],
   "net": {
     "domains": ["opencode.ai"]
@@ -34,18 +34,18 @@
         "key": "apiKey",
         "type": "string",
         "default": "",
-        "title": "OpenCode Go API Key / API 密钥",
-        "description": "Create one at opencode.ai/console → Account → Personal API keys. Stored in this plugin's local settings file."
+        "title": "OpenCode Go API 密钥 / API Key",
+        "description": "在 opencode.ai/console 的「账户 → 个人 API 密钥」创建。保存在本机插件设置文件中。"
       },
       {
         "key": "language",
         "type": "select",
         "default": "system",
-        "title": "Language / 界面语言",
+        "title": "界面语言 / Language",
         "enum": [
-          { "label": "Follow system / 跟随系统", "value": "system" },
-          { "label": "English", "value": "en" },
-          { "label": "简体中文", "value": "zh-CN" }
+          { "label": "跟随系统 / Follow system", "value": "system" },
+          { "label": "简体中文", "value": "zh-CN" },
+          { "label": "English", "value": "en" }
         ]
       }
     ]
@@ -67,8 +67,8 @@
     },
     "zh-CN": {
       "name": "OpenCode 额度",
-      "description": "紧凑面板显示 OpenCode Go 订阅额度：滚动 5 小时、每周、每月三档余量与重置时间。只读，仅访问一个接口，中英双语。",
-      "safetyNotes": "只读。仅在当前供应商是 OpenCode Go 时，用你填入本插件设置的 API Key 访问唯一接口 GET opencode.ai/zen/go/v1/usage；换成其他供应商时不显示任何数字、也不发请求。不读取对话、记录、项目文件，也不读取 PI-Desktop 自身的供应商密钥；Key 保存在本机插件设置文件中，不会发往任何其他地方。"
+      "description": "紧凑面板显示 OpenCode Go 订阅剩余额度：滚动 5 小时、每周、每月三档，带进度条与重置倒计时。只读，仅访问一个接口；中英双语，默认跟随系统语言。",
+      "safetyNotes": "只读。唯一请求是 GET opencode.ai/zen/go/v1/usage，且仅在当前供应商为 OpenCode Go 时发出；换成其他供应商时不显示数字、也不发请求。manifest 已把出网范围限制为 opencode.ai。不读取对话记录、项目文件，也不读取 PI-Desktop 自身的供应商密钥；API Key 保存在本机插件设置文件中，不会发往任何其他地方。"
     }
   }
 }
