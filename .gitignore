@@ -1,0 +1,13 @@
+# Build output — `.piplug` packages are published through the plugin center,
+# the repository keeps sources only.
+dist/
+
+# Dependencies
+node_modules/
+
+# Editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
